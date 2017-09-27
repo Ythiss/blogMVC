@@ -11,8 +11,6 @@ class Users extends Database
     private $id = null;
     private $username;
     private $password;
-    protected $pdo;
-
     /**
      * @return null
      */
@@ -59,27 +57,6 @@ class Users extends Database
     public function setPassword($password)
     {
         $this->password = $password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPdo()
-    {
-        return $this->pdo;
-    }
-
-    /**
-     * @param mixed $pdo
-     */
-    public function setPdo($pdo)
-    {
-        $this->pdo = $pdo;
-    }
-
-    protected function findAllUsers()
-    {
-        $query = '';
     }
 
 

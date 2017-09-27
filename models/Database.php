@@ -8,22 +8,22 @@
 
 class Database
 {
-    private $login = 'root';
-    private $passwd = '';
-    private $url = 'mysql:host=localhost;dbname=blog';
-    private $pdo = false;
+    private static $login = 'root';
+    private static $passwd = '';
+    private static $url = 'mysql:host=localhost;dbname=blog';
+    private static $pdo = false;
 
-    public function getPDO(){
+    public static function getPDO(){
 
-        if($this->pdo === false){
+        if(self::$pdo === false){
             try {
                 $extraParams = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-                $this->pdo = new PDO($this->url, $this->login, $this->passwd, $extraParams);
+                self::$pdo = new PDO(self::$url, self::$login, self::$passwd, $extraParams);
                 echo 'blblll';
             } catch (PDOException $e) {
                 die("La connexion a échouée" . $e->getLine());
             }
         }
-        return $this->pdo;
+        return self::$pdo;
     }
 }
