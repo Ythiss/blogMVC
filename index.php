@@ -1,22 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amaia.H
- * Date: 26/09/2017
- * Time: 16:47
- */
-require_once 'models/Database.php';
-require 'models/Users.php';
-require 'Controllers/UsersController.php';
-$bl = new Database();
-$bl->getPDO();
+require_once('view/templates/header.php');
+require_once('view/templates/menu.php');
 
 
-$user = new Users();
-$user->setUsername('toto');
-$user->getUsername();
-var_dump($user);
+if(!isset($_REQUEST['module']) ){
+     $_REQUEST['module'] = 'accueil';
+}
+$module = $_REQUEST['module'];
 
-$userC = new UsersController();
-$userC->findAllUsers();
-var_dump($userC);
+switch($module){
+    case 'accueil':
+                 //ob_end_flush();
+                include("view/index.php") ;
+                break;
+
+     case 'user':
+                //ob_end_flush();
+                include("Controllers/UsersController.php") ;
+                break;
+
+     case 'account':
+                 //ob_end_flush();
+                include("view/account.php") ;
+                break;
+
+
+
+}
+
+require_once('view/templates/footer.php');

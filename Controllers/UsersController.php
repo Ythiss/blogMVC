@@ -6,73 +6,39 @@
  * Time: 10:07
  */
 
-class UsersController
-{
+ if(!isset($_REQUEST['action']) ){
+      $_REQUEST['action'] = 'default';
+ }
+ $action = $_REQUEST['action'];
+ require_once('models/Users.php');
 
-    public function connectMe()
-    {
-        $pdo = Database::getPDO();
-        if (empty($_POST['username']) || empty($_POST['psw'])){
-            echo 'Erreur : Des champs ne sont pas renseignés !<br>'. PHP_EOL;
-        }
-        else{
-            $prep = $pdo->prepare('SELECT id FROM joueurs WHERE username = ? AND psw = ?');
-            $prep->execute(array($_POST['username'], $_POST['psw']));
-            $checkUsernamePsw = $prep->fetch();
-            $prep->closeCursor();
-            if (!$checkUsernamePsw) {
-                echo 'Mauvais identifiant ou mot de passe !';
-            } else {
-                session_start();
-                $_SESSION['id'] = $checkUsernamePsw['id'];
+ switch($action){
+    case 'connectMe':
+      $identifiant = $_POST['identifiant'];
+      $motDePasse = $_POST['motDePasse'];
 
-                header("Location: ../public/account.php");
-            }
-        }
+      //On regarde si l'user existe
+      $user = Users::toConnect($identifiant,$motDePasse);
+
+      //S'il existe on met dans la SESSION ses informations
+      if($user){
+        $_SESSION['id_user'] = $user[0]['id_user'];
+        $_SESSION['identifiant'] = $user[0]['identifiant']		;
+      }
+      else {
+        echo 'erreur !!';
+      }
+      header('Location: ./index.php');
+    break;
+
+    case 'toDisconnect':{
+      session_destroy();
+      unset($_SESSION);
+      header('Location: ./view/disconnect.php');
+      break;
     }
 
-
-    /*public function toConnect()
-    {
-        $identifiant = '';
-        $motDePasse = '';
-        $bdd = Database::getPDO();
-        $req = $bdd->query('SELECT * FROM user
-			WHERE identifiant ="' .$identifiant . '"
-			AND mot_de_passe = "'.$motDePasse.'"  ');
-        $reponse = $req->fetchAll();
-        return $reponse ? $reponse : "Erreur connexion";
+    default:
+      header('Location: ./index.php');
+      break;
     }
-
-    public function connect()
-    {
-        //On récupère les informations du formulaire
-        $identifiant = $_POST['identifiant'];
-        $motDePasse = $_POST['motDePasse'];
-        //On regarde si l'user existe en base
-        $user = UsersController::toConnect($identifiant,$motDePasse);
-        //S'il existe on met dans la superglobale SESSION ses informations
-        if($user){
-            $_SESSION['id_user'] = $user[0]['id_user'];
-            $_SESSION['identifiant'] = $user[0]['identifiant']		;
-        }
-        // Dans tous les cas on redirige sur l'index (pour l'instant)
-        header('Location: ./index.php');
-    }*/
-
-    static function deconnection(){
-        // Suppression des variables de session et de la session
-        $_SESSION = array();
-        session_destroy();
-        unset($_SESSION);
-        header("Location: ./index.php");
-    }
-
-    public function findAllUsers()
-    {
-        $pdo = Database::getPDO();
-        $query = $pdo->prepare('SELECT username FROM Users');
-        $infos = $query->fetch();
-        var_dump($infos);
-    }
-}

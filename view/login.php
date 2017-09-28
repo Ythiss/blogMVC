@@ -8,7 +8,7 @@
 
 
 ?>
-<form method="post" action="../Controllers/UsersController.php?action=""">
+<form method="post" action="index.php?module=user&action=connectMe">
     <input type="text" placeholder="Username"/>
     <input type="password" placeholder="*******"/>
     <button>Connect</button>

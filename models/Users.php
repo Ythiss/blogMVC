@@ -8,56 +8,34 @@
 
 class Users extends Database
 {
-    private $id = null;
-    private $username;
-    private $password;
-    /**
-     * @return null
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * @param null $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
+    public static function toConnect($identifiant,$motDePasse)
+  	{
+  		$bdd = Database::getPDO();
+  		$req = $bdd->query('SELECT * FROM users
+  			WHERE identifiant ="' .$identifiant . '"
+  			AND mot_de_passe = "'.$motDePasse.'"  ');
+  		$reponse = $req->fetchAll();
+  		return $reponse ? $reponse : "Erreur connexion";
+  	}
 
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
+	// affiche tous les users
+	public static function findAllUsers()
+	{
+		$bdd = Database::getPDO();
+		$req = $bdd->query('SELECT * FROM user');
+		$reponse = $req->fetchAll();
+		return $reponse ? $reponse : "erreur ou liste d'user vide.";
+	}
 
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
+	// affiche un user particulier
+	public static function viewOne($idUser)
+	{
+		$bdd = Database::getPDO();
+		$req = $bdd->query('SELECT * FROM user WHERE id_user ="' .$idUser  . '"');
+		$reponse = $req->fetchAll();
+		return $reponse ? $reponse : "erreur ou utilisateur non trouvé.";
+	}
 
 
 }

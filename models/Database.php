@@ -9,7 +9,7 @@
 class Database
 {
     private static $login = 'root';
-    private static $passwd = '';
+    private static $passwd = 'SamRootMachine';
     private static $url = 'mysql:host=localhost;dbname=blog';
     private static $pdo = false;
 
@@ -21,7 +21,7 @@ class Database
                 self::$pdo = new PDO(self::$url, self::$login, self::$passwd, $extraParams);
                 echo 'blblll';
             } catch (PDOException $e) {
-                die("La connexion a échouée" . $e->getLine());
+                die("La connexion a ï¿½chouï¿½e" . $e->getLine());
             }
         }
         return self::$pdo;
