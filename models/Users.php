@@ -5,16 +5,15 @@
  * Date: 26/09/2017
  * Time: 16:51
  */
-
+require_once 'Database.php';
 class Users extends Database
 {
-
-    public static function toConnect($identifiant,$motDePasse)
+    public static function toConnect($username,$password)
   	{
   		$bdd = Database::getPDO();
   		$req = $bdd->query('SELECT * FROM users
-  			WHERE identifiant ="' .$identifiant . '"
-  			AND mot_de_passe = "'.$motDePasse.'"  ');
+  			WHERE username ="' .$username . '"
+  			AND password = "'.$password.'"  ');
   		$reponse = $req->fetchAll();
   		return $reponse ? $reponse : "Erreur connexion";
   	}
