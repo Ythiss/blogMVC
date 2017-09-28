@@ -10,31 +10,31 @@
       $_REQUEST['action'] = 'default';
  }
  $action = $_REQUEST['action'];
- require_once('models/Users.php');
+ require_once('./models/Users.php');
 
  switch($action){
-    case 'connectMe':
-      $identifiant = $_POST['identifiant'];
-      $motDePasse = $_POST['motDePasse'];
+     case 'connectMe':
+      $username = $_POST['username'];
+      $password = $_POST['password'];
 
       //On regarde si l'user existe
-      $user = Users::toConnect($identifiant,$motDePasse);
+      $user = Users::toConnect($username,$password);
 
       //S'il existe on met dans la SESSION ses informations
       if($user){
-        $_SESSION['id_user'] = $user[0]['id_user'];
-        $_SESSION['identifiant'] = $user[0]['identifiant']		;
+          $_SESSION['id'] = $user[0]['id'];
+          $_SESSION['username'] = $user[0]['username'];
       }
       else {
         echo 'erreur !!';
       }
-      header('Location: ./index.php');
+      header('Location: ./account.php');
     break;
 
     case 'toDisconnect':{
       session_destroy();
       unset($_SESSION);
-      header('Location: ./view/disconnect.php');
+      header('Location: ./index.php');
       break;
     }
 
