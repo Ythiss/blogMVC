@@ -14,12 +14,12 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.php?module=accueil">Blog</a>
+            <a class="navbar-brand" href="index.php">Blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="home">Home</a></li>
-                <?php if (!empty($_SESSION)) : echo'<li><a href="account.php">Mon compte</a></li>'; endif;?>
+                <li><a href="index.php">Home</a></li>
+                <?php if (!empty($_SESSION)) : echo'<li><a href="index.php?module=account">Mon compte</a></li>'; endif;?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if (empty($_SESSION)) : echo'<li><a href="#signIn" data-toggle="modal" data-target="#signIn">Connexion</a></li>'; endif;?>
@@ -39,7 +39,7 @@
                 <h4 class="modal-title">Connexion</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="<?php echo URL_SITE?>/connection/identification">
+                <form class="form-horizontal" method="post" action="index.php?module=user&action=connectMe">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-10">
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="psw" d="inputPassword3" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group">
@@ -85,7 +85,7 @@
             <div class="modal-body">
                 <p>Vous allez être déconnecter ! À bientôt ! :)</p>
                 <form method="post" action="index.php?module=user&action=toDisconnect">
-                    <button type="submit"class="btn btn-default">Déconnexion</button>
+                    <button type="submit" class="btn btn-default">Déconnexion</button>
                 </form>
             </div>
         </div>
