@@ -31,7 +31,7 @@ class Users extends Database
 	public static function viewOne($idUser)
 	{
 		$bdd = Database::getPDO();
-		$req = $bdd->query('SELECT * FROM user WHERE id_user ="' .$idUser  . '"');
+		$req = $bdd->query('SELECT * FROM user WHERE id ="' .$idUser  . '"');
 		$reponse = $req->fetchAll();
 		return $reponse ? $reponse : "erreur ou utilisateur non trouvé.";
 	}
