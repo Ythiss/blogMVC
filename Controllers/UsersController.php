@@ -6,10 +6,7 @@
  * Time: 10:07
  */
 
- if(!isset($_REQUEST['action']) ){
-      $_REQUEST['action'] = 'default';
- }
- $action = $_REQUEST['action'];
+ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'default';
  require_once('./models/Users.php');
 
  switch($action){
@@ -28,7 +25,7 @@
       else {
         echo 'erreur !!';
       }
-      header('Location: ./account.php');
+      header('Location: ./index.php?module=account');
     break;
 
     case 'toDisconnect':{

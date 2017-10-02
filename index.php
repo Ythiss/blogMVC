@@ -8,17 +8,9 @@ require_once('view/templates/menu.php');
 $contents = ob_get_contents();
 ob_end_clean();
 
-if(!isset($_REQUEST['module']) ){
-     $_REQUEST['module'] = 'accueil';
-}
-$module = $_REQUEST['module'];
+$module = isset($_REQUEST['module']) ? $_REQUEST['module'] : 'accueil';
 
 switch($module){
-    case 'accueil':
-        echo $contents;
-        include("view/index.html");
-        break;
-
     case 'user':
         include("Controllers/UsersController.php");
         break;
@@ -28,8 +20,10 @@ switch($module){
         include("view/account.php") ;
         break;
 
-
-
+    default:
+        echo $contents;
+        include("view/index.html");
+        break;
 }
 
 require_once('view/templates/footer.php');
