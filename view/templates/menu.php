@@ -19,7 +19,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
-                <?php if (!empty($_SESSION)) : echo'<li><a href="index.php?module=account">Mon compte</a></li>'; endif;?>
+                <?php if (!empty($_SESSION)) : echo'<li><a href="index.php?module=account&action=listAll">Mon compte</a></li>'; endif;?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if (empty($_SESSION)) : echo'<li><a href="#signIn" data-toggle="modal" data-target="#signIn">Connexion</a></li>'; endif;?>
