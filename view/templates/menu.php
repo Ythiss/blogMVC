@@ -83,7 +83,7 @@
                 <h4 class="modal-title">Déconnexion</h4>
             </div>
             <div class="modal-body">
-                <p>Vous allez être déconnecter ! À bientôt ! :)</p>
+                <p>Vous allez être déconnecté ! À bientôt ! :)</p>
                 <form method="post" action="index.php?module=user&action=toDisconnect">
                     <button type="submit" class="btn btn-default">Déconnexion</button>
                 </form>
