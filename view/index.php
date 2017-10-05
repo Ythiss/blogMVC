@@ -10,7 +10,7 @@
         <section>
             <h2>Derniers posts publiés :</h2>
             <article>
-                <h3>BLBLBLBLBLBL</h3>
+                <h3><?= $_SESSION['postTitle'] . ' (Par blbl // ' . $_SESSION['postDatePublish'] .')' ?></h3>
                 <p>blblblblblbllblblblblbllblblblbl</p>
             </article>
         </section>

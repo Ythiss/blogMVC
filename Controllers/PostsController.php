@@ -10,12 +10,12 @@
  require_once('./models/Posts.php');
 
  switch($action){
-     case 'createPost':
-      /*$title = $_POST['title'];
+     case 'publish':
+      $title = $_POST['title'];
       $content = $_POST['content'];
 
       //On regarde si l'user existe
-      $user = Users::toConnect($username,$password);
+      $user = Users::createPost($title,$content);
 
       //S'il existe on met dans la SESSION ses informations
       if($user){
@@ -25,8 +25,17 @@
       else {
         echo 'erreur !!';
       }
-      header('Location: ./index.php?module=account');*/
+      header('Location: ./index.php?module=account');
     break;
+
+    case 'home':{
+      $posts = Posts::findLastFivePosts();
+      $_SESSION['postTitle'] = $post[0]['title'];
+      $_SESSION['postDatePublish'] = $post[0]['publicationDate'];
+
+      header('Location: ./index.php?module=home&action=home');
+      break;
+    }
 
     case 'listAll':{
       $posts = Posts::findAllPosts();

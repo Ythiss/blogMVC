@@ -37,6 +37,15 @@ class Posts extends Database
 		return $reponse ? $reponse : "erreur ou liste d'user vide.";
 	}
 
+  // insère un article en base
+	public static function createPost($title, $content)
+	{
+		$bdd = Database::getPDO();
+		$req = $bdd->query('INSERT INTO posts (title, content) VALUES (:title, :content)');
+		$reponse = $req->fetchAll();
+		return $reponse ? $reponse : "erreur ou liste d'user vide.";
+	}
+
 	// affiche un seul article
 	public static function viewOne($idArticle)
 	{

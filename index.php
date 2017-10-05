@@ -8,7 +8,7 @@ require_once('view/templates/menu.php');
 $contents = ob_get_contents();
 ob_end_clean();
 
-$module = isset($_REQUEST['module']) ? $_REQUEST['module'] : 'accueil';
+$module = isset($_REQUEST['module']) ? $_REQUEST['module'] : 'home';
 
 switch($module){
     case 'user':
@@ -21,8 +21,9 @@ switch($module){
         break;
 
     default:
+    case 'home':
         echo $contents;
-        include("view/index.html");
+        include("view/index.php") ;
         break;
 }
 
