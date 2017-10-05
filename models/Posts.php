@@ -18,40 +18,31 @@ class Posts extends Database
 		return $reponse ? $reponse : "Erreur connexion";
 	}
 
-    /*public static function getAllPosts()
-    {
-        $posts = Posts::findAllPosts();
-        $tab = array();
-        foreach ($posts as $key => $content){
-            $tab[$key] = $content;
-        }
-        return $tab;
-	}*/
 
 	// affiche les 5 derniers articles par ordre décroissant
-	public static function findLastFivePosts()
-	{
-		$bdd = Database::getPDO();
-		$req = $bdd->query('SELECT * FROM posts ORDER BY publicationDate DESC LIMIT 5');
-		$reponse = $req->fetchAll();
-		return $reponse ? $reponse : "erreur ou liste d'user vide.";
-	}
+    public static function findLastFivePosts()
+    {
+        $bdd = Database::getPDO();
+        $req = $bdd->query('SELECT * FROM posts ORDER BY publicationDate DESC LIMIT 5');
+        $reponse = $req->fetchAll();
+        return $reponse ? $reponse : "erreur ou liste d'user vide.";
+    }
 
   // insère un article en base
-	public static function createPost($title, $content)
-	{
-		$bdd = Database::getPDO();
-		$req = $bdd->query('INSERT INTO posts (title, content) VALUES (:title, :content)');
-		$reponse = $req->fetchAll();
-		return $reponse ? $reponse : "erreur ou liste d'user vide.";
-	}
+    public static function createPost($title, $content)
+    {
+        $bdd = Database::getPDO();
+        $req = $bdd->query('INSERT INTO posts (title, content) VALUES ("' .$title . '","' .$content . '")');
+        $reponse = $req->fetchAll();
+        return $reponse ? $reponse : "L'user n'est pas crée !";
+    }
 
-	// affiche un seul article
-	public static function viewOne($idArticle)
-	{
-		$bdd = Database::getPDO();
-		$req = $bdd->query('SELECT * FROM posts WHERE id ="' .$idArticle  . '"');
-		$reponse = $req->fetchAll();
-		return $reponse ? $reponse : "erreur ou utilisateur non trouvé.";
-	}
+    // affiche un seul article
+    public static function viewOne($idArticle)
+    {
+        $bdd = Database::getPDO();
+        $req = $bdd->query('SELECT * FROM posts WHERE id ="' .$idArticle  . '"');
+        $reponse = $req->fetchAll();
+        return $reponse ? $reponse : "erreur ou utilisateur non trouvé.";
+    }
 }

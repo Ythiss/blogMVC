@@ -15,15 +15,19 @@ switch($module){
         include("Controllers/UsersController.php");
         break;
 
-    case 'account':
+    case 'post':
         echo $contents;
-        include("view/account.php") ;
+        include("view/post.php");
         break;
 
-    default:
+    case 'account':
+        echo $contents;
+        include("view/account.php");
+        break;
+
     case 'home':
         echo $contents;
-        include("view/index.php") ;
+        include("view/index.php");
         break;
 }
 

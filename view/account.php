@@ -1,6 +1,7 @@
 <?php
-//require_once('./models/Posts.php');
-//$posts = Posts::getAllPosts();?>
+require_once('./models/Posts.php');
+$posts = Posts::findAllPosts();
+?>
 <style>
     table, tr, th, td{
         padding: 1em 1em;
@@ -10,20 +11,18 @@
 
 <div class="container">
     <div class="panel-body">
-        <h1>Mon compte</h1>
-        <p><u>Username</u> : <?=$_SESSION['username'];?></p>
-        <?php //var_dump($posts)?>
+        <h1>Bienvenue sur votre compte <b><?= $_SESSION['username']?></b> !</h1>
+
         <table>
             <tr>
-                <th>Article</th>
+                <th>Article publiés</th>
                 <th>Date parution</th>
             </tr>
-            <?php ?>
-            <tr>
-                <td><?=$_SESSION['postTitle']?></td>
-                <td><?=$_SESSION['postDatePublish']?></td>
+            <tr><?php foreach ($posts as $post) {?>
+                <td><?= $post['title'];?></td>
+                <td><?= $post['publicationDate'];?></td>
             </tr>
-            <?php ?>
+            <?php }?>
         </table>
     </div>
 </div>

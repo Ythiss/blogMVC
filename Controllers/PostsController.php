@@ -10,40 +10,41 @@
  require_once('./models/Posts.php');
 
  switch($action){
-     case 'publish':
+     /*case 'publish':
       $title = $_POST['title'];
       $content = $_POST['content'];
 
-      //On regarde si l'user existe
-      $user = Users::createPost($title,$content);
+      $posts = Posts::createPost($title,$content);
 
-      //S'il existe on met dans la SESSION ses informations
-      if($user){
-          $_SESSION['id'] = $user[0]['id'];
-          $_SESSION['username'] = $user[0]['username'];
+
+      if($posts){
+          $_SESSION['id'] = $posts[0]['id'];
+          $_SESSION['username'] = $posts[0]['username'];
+          $_SESSION['postTitle'] = $posts[0]['title'];
+          $_SESSION['postContent'] = $posts[0]['content'];
       }
       else {
         echo 'erreur !!';
       }
       header('Location: ./index.php?module=account');
-    break;
+    break;*/
 
-    case 'home':{
+    /*case 'home':{
       $posts = Posts::findLastFivePosts();
-      $_SESSION['postTitle'] = $post[0]['title'];
-      $_SESSION['postDatePublish'] = $post[0]['publicationDate'];
+      $_SESSION['postTitle'] = $posts[0]['title'];
+      $_SESSION['postDatePublish'] = $posts[0]['publicationDate'];
 
       header('Location: ./index.php?module=home&action=home');
       break;
-    }
+    }*/
 
     case 'listAll':{
-      $posts = Posts::findAllPosts();
-      $i =0;
+      /*$posts = Posts::findAllPosts();
+      $i = 0;
         foreach ($posts as $post) {
-            $_SESSION['postTitle'] = $post[$i]['title'];
-            $_SESSION['postDatePublish'] = $post[$i]['publicationDate'];
-      }
+            $_SESSION['postTitle'] = $post['title'];
+            $_SESSION['postDatePublish'] = $post['publicationDate'];
+      }*/
 
       header('Location: ./index.php?module=account&action=listAll');
       break;

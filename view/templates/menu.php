@@ -14,11 +14,11 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.php">Blog</a>
+            <a class="navbar-brand" href="index.php?module=home&action=home">Blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php?module=home&action=home">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <?php if (!empty($_SESSION)) : echo'<li><a href="index.php?module=account&action=listAll">Mon compte</a></li>'; endif;?>
@@ -81,10 +81,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Pulier un article</h4>
+                <h4 class="modal-title">Publier un article</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="index.php?module=home&action=publish">
+                <form class="form-horizontal" method="post" action="index.php?module=post&action=publish">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Titre de l'aticle</label>
                         <div class="col-sm-10">
@@ -92,17 +92,20 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Contenu de l'article</label>
+                        <label class="col-sm-2 control-label">Contenu de l'article</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="content" placeholder="Content">
+                            <textarea class="form-control" name="content" placeholder="Content"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-6 col-sm-6">
-                            <button type="submit" class="btn btn-default">Publier</button>
-                            <button class="btn btn-danger">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Publier</button>
+                            <a href="index.php?module=home&action=home">
+                                <button type="button" class="btn btn-danger">Annuler</button>
+                            </a>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
