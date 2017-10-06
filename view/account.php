@@ -1,6 +1,4 @@
 <?php
-require_once('./models/Posts.php');
-$posts = Posts::findAllPosts();
 ?>
 <style>
     table, tr, th, td{
@@ -18,7 +16,7 @@ $posts = Posts::findAllPosts();
                 <th>Article publiés</th>
                 <th>Date parution</th>
             </tr>
-            <tr><?php foreach ($posts as $post) {?>
+            <tr><?php foreach (Template::getData('posts') as $post) {?>
                 <td><?= $post['title'];?></td>
                 <td><?= $post['publicationDate'];?></td>
             </tr>

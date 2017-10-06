@@ -17,12 +17,12 @@ switch($module){
 
     case 'post':
         echo $contents;
-        include("view/post.php");
+        include("Controllers/PostsController.php");
         break;
 
     case 'account':
         echo $contents;
-        include("view/account.php");
+        include("Controllers/PostsController.php");
         break;
 
     case 'home':

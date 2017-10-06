@@ -38,14 +38,9 @@
     }
 
     case 'listAll':{
-      /*$posts = Posts::findAllPosts();
-      $i = 0;
-        foreach ($posts as $post) {
-            $_SESSION['postTitle'] = $post['title'];
-            $_SESSION['postDatePublish'] = $post['publicationDate'];
-      }*/
-
-      header('Location: ./index.php?module=account&action=listAll');
+      $posts = Posts::findAllPosts();
+      Template::addData('posts', $posts);
+      Template::show('account');
       break;
     }
 
