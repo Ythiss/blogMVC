@@ -8,6 +8,7 @@
 
  $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'default';
  require_once('./models/Posts.php');
+ require_once('./models/Template.php');
 
  switch($action){
      /*case 'publish':
@@ -29,14 +30,12 @@
       header('Location: ./index.php?module=account');
     break;*/
 
-    /*case 'home':{
+    case 'home':{
       $posts = Posts::findLastFivePosts();
-      $_SESSION['postTitle'] = $posts[0]['title'];
-      $_SESSION['postDatePublish'] = $posts[0]['publicationDate'];
-
-      header('Location: ./index.php?module=home&action=home');
+      Template::addData('posts', $posts);
+      Template::show('index');
       break;
-    }*/
+    }
 
     case 'listAll':{
       /*$posts = Posts::findAllPosts();

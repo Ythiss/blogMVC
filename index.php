@@ -27,7 +27,7 @@ switch($module){
 
     case 'home':
         echo $contents;
-        include("view/index.php");
+        include("Controllers/PostsController.php");
         break;
 }
 

@@ -1,8 +1,4 @@
 <?php
-require_once('./models/Posts.php');
-$posts = Posts::findLastFivePosts();
-//var_dump($posts);
-$author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
 ?>
 <style>
     article{
@@ -15,9 +11,9 @@ $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
     <div class="panel-body">
         <h1>Bienvenue sur le blog !</h1>
         <section>
-            <h2>Derniers posts publiés :</h2><?php foreach ($posts as $post) {?>
+            <h2>Derniers posts publiés :</h2><?php foreach (Template::getData('posts') as $post) {?>
                 <article>
-                    <h3><?= $post['title'] . ' (Par '.$author .' // le ' . $post['publicationDate'] .')' ?></h3>
+                    <h3><?= $post['title'] . ' (Par demo // le ' . $post['publicationDate'] .')' ?></h3>
                     <p><?= $post['content']?></p>
                     <span><a href="view/post.php?id=<?=$post['id']?>">Voir plus</a></span>
                 </article>
