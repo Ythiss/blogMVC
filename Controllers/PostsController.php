@@ -11,7 +11,7 @@
  require_once('./models/Template.php');
 
  switch($action){
-     /*case 'publish':
+     case 'publish':
       $title = $_POST['title'];
       $content = $_POST['content'];
 
@@ -27,8 +27,8 @@
       else {
         echo 'erreur !!';
       }
-      header('Location: ./index.php?module=account');
-    break;*/
+      header('Location: ./index.php?module=account&action=listAll');
+    break;
 
     case 'home':{
       $posts = Posts::findLastFivePosts();

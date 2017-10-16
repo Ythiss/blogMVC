@@ -25,7 +25,7 @@
       else {
         echo 'erreur !!';
       }
-      header('Location: ./index.php?module=account');
+      header('Location: ./index.php?module=account&action=listAll');
     break;
 
     case 'toDisconnect':{
