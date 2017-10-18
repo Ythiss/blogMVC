@@ -19,8 +19,8 @@
 
       //S'il existe on met dans la SESSION ses informations
       if($user){
-          $_SESSION['id'] = $user[0]['id'];
-          $_SESSION['username'] = $user[0]['username'];
+          $_SESSION['id'] = $user['id'];
+          $_SESSION['username'] = $user['username'];
       }
       else {
         echo 'erreur !!';
