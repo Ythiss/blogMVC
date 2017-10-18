@@ -15,23 +15,13 @@
       $title = $_POST['title'];
       $content = $_POST['content'];
 
-      $posts = Posts::createPost($title,$content);
+      $posts = Posts::createPost($title,$content,$_SESSION['id'],date("Y-m-d",time()));
 
-
-      if($posts){
-          $_SESSION['id'] = $posts[0]['id'];
-          $_SESSION['username'] = $posts[0]['username'];
-          $_SESSION['postTitle'] = $posts[0]['title'];
-          $_SESSION['postContent'] = $posts[0]['content'];
-      }
-      else {
-        echo 'erreur !!';
-      }
-      header('Location: ./index.php?module=account&action=listAll');
+      header('Location: ./post.php?id="'.$_SESSION['id'].'"');
     break;
 
     case 'home':{
-      $posts = Posts::findLastFivePosts();
+      $posts = Posts::findLastPosts(5);
       Template::addData('posts', $posts);
       Template::show('index');
       break;
