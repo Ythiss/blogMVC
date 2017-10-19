@@ -1,6 +1,7 @@
 <?php
 require_once('../models/Posts.php');
 $posts = Posts::viewOne($_GET['id']);
+//var_dump($posts);die();
 $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
 ?>
 <style>
@@ -16,10 +17,9 @@ $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
         </a>
         <h1>Article</h1>
         <section>
-            <article><?php foreach ($posts as $post) {?>
-                <h3><?= $post['title'] . ' (Par '. $author . '// ' . $post['publicationDate'] .')' ?></h3>
-                <p><?= $post['content']?></p>
-                <?php }?>
+            <article>
+                <h3><?= $posts['title'] . ' (Par '. $author . ' // ' . $posts['publicationDate'] .')' ?></h3>
+                <p><?= $posts['content']?></p>
             </article>
         </section>
     </div>

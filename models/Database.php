@@ -9,7 +9,7 @@
 class Database
 {
     private static $login = 'root';
-    private static $passwd = '';
+    private static $passwd = 'SamRootMachine';
     private static $url = 'mysql:host=localhost;dbname=blog';
     private static $pdo = false;
 
