@@ -16,6 +16,11 @@ switch($module){
         break;
 
     case 'post':
+        include("Controllers/PostsController.php");
+        echo $contents;
+        break;
+
+    case 'viewPost':
         echo $contents;
         include("Controllers/PostsController.php");
         break;

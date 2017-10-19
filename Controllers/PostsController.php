@@ -15,9 +15,9 @@
       $title = $_POST['title'];
       $content = $_POST['content'];
 
-      $posts = Posts::createPost($title,$content,$_SESSION['id'],date("Y-m-d",time()));
+      $posts = Posts::createPost($title,$content,$_SESSION['id'],date("Y-m-d H:i:s",time()));
 
-      header('Location: ./post.php?id="'.$_SESSION['id'].'"');
+      header('Location: ./index.php?module=home&action=home');
     break;
 
     case 'home':{
@@ -26,6 +26,12 @@
       Template::show('index');
       break;
     }
+
+     case 'viewPost':
+         $post = Posts::viewOne($_GET['id']);
+         Template::addData('post', $post);
+         Template::show('post');
+         break;
 
     case 'listAll':{
       $posts = Posts::findAllPosts();

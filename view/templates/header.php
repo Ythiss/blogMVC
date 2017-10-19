@@ -20,12 +20,5 @@
 
     <!--  Style.css  -->
     <link href="../blog/assets/css/style.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript" src="../blog/assets/js/ajax/connection.js">
-
-  </script>
 </head>
 <body>

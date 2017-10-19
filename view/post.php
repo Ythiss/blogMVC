@@ -1,7 +1,5 @@
 <?php
-require_once('../models/Posts.php');
-$posts = Posts::viewOne($_GET['id']);
-//var_dump($posts);die();
+$post = Template::getData('post');
 $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
 ?>
 <style>
@@ -12,14 +10,14 @@ $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
 </style>
 <div class="container">
     <div class="panel-body">
-        <a href="../index.php?module=home&action=home">
+        <a href="index.php?module=home&action=home">
             <button type="button" class="btn btn-primary">Retour</button>
         </a>
         <h1>Article</h1>
         <section>
             <article>
-                <h3><?= $posts['title'] . ' (Par '. $author . ' // ' . $posts['publicationDate'] .')' ?></h3>
-                <p><?= $posts['content']?></p>
+                <h3><?= $post['title'] . ' (Par '. $author . ' // ' . $post['publicationDate'] .')' ?></h3>
+                <p><?= $post['content']?></p>
             </article>
         </section>
     </div>

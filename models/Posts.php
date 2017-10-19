@@ -15,10 +15,9 @@ class Posts extends Database
 	    try{
             $bdd = Database::getPDO();
             $req = $bdd->query('SELECT * FROM posts ORDER BY publicationDate DESC');
-            $reponse = $req->fetchAll();
-            return $reponse ? $reponse : "Erreur connexion";
+            return $req->fetchAll();
         }catch (Exception $e) {
-            var_dump($e->getMessage());
+            throw new Exception("Erreur ou liste vide.");
         }
 	}
 
@@ -31,7 +30,7 @@ class Posts extends Database
             $req = $bdd->query('SELECT * FROM posts ORDER BY publicationDate DESC LIMIT '.$number.'');
             return $req->fetchAll();
         }catch (Exception $e) {
-            var_dump($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -54,10 +53,9 @@ class Posts extends Database
         try{
             $bdd = Database::getPDO();
             $req = $bdd->query('SELECT * FROM posts WHERE id ="' .$idArticle  . '"');
-            $reponse = $req->fetch();
-            return $reponse ? $reponse : "erreur ou utilisateur non trouvé.";
+            return $req->fetch();
         }catch (Exception $e) {
-            var_dump($e->getMessage());
+            throw new Exception("Article non trouvé");
         }
     }
 }

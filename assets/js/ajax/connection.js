@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     $.ajax({
       type : 'POST',
-      url : './../../Controllers/UsersController.php',
+      url : './Controllers/UsersController.php',
       data : formData,
       dataType : 'json'
     })
@@ -19,8 +19,8 @@ $(document).ready(function(){
 
             // erreur pour username
             if (data.errors.username) {
-                $('#name-group').addClass('has-error');
-                $('#name-group').append('<div class="help-block">' + data.errors.username + '</div>');
+                $('#username').addClass('has-error');
+                $('#username').append('<div class="help-block">' + data.errors.username + '</div>');
             }
 
             // erreur pour password
@@ -34,7 +34,7 @@ $(document).ready(function(){
             // success message!
             $('form').append('<div class="alert alert-success">Connexion réussi !</div>');
             window.location.reload(true);
-            alert('success');
+            alert('Connexion réussi !');
 
         }
     })

@@ -16,7 +16,7 @@ $author = isset($_SESSION['username']) ? $_SESSION['username'] : 'demo';
                 <article>
                     <h3><?= $post['title'] . ' (Par '.$author.' // le ' . $post['publicationDate'] .')' ?></h3>
                     <p><?= $post['content']?></p>
-                    <span><a href="view/post.php?id=<?=$post['id']?>">Voir plus</a></span>
+                    <span><a href="index.php?module=viewPost&action=viewPost&id=<?= $post['id']?>">Voir plus</a></span>
                 </article>
             <?php }?>
         </section>
